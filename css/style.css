@@ -2,13 +2,13 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     background-color: #eef9bf;
     position: relative;
 }
 
-h1{
+h1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -19,10 +19,75 @@ h1{
     margin-top: 40px;
 }
 
-.container{
+.container {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 47px 10% 0;        
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;        
 }
+
+.container-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.card {
+    width: 117px;
+    height: 146px; 
+    position: relative;
+    border-radius: 5px;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    border: 1px solid #99CEA8;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+
+  .back-face {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .back-face {
+    transform: rotateY(0deg);
+  }
+
+  .card:hover .front-face {
+    transform: rotateY(-180deg);
+  }
+
+  /* ----- RESPONSIVIDADE ----- */
+
+  @media(max-width: 335px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    .container-cards {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 35px;
+        margin-bottom: 45px;
+    }
+  }
