@@ -3,9 +3,7 @@
 }
 
 body {
-    width: 100%;
     background-color: #eef9bf;
-    position: relative;
 }
 
 h1 {
@@ -24,7 +22,8 @@ h1 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 0 auto;        
+    margin: 0 auto;
+    gap: 35px;     
 }
 
 .container-cards {
@@ -68,17 +67,17 @@ h1 {
     transform: rotateY(180deg);
   }
 
-  .card:hover .back-face {
+  .back {
     transform: rotateY(0deg);
   }
 
-  .card:hover .front-face {
+  .front {
     transform: rotateY(-180deg);
   }
 
   /* ----- RESPONSIVIDADE ----- */
 
- /* @media(max-width: 335px) {
+ @media(max-width: 335px) {
     h1 {
         font-size: 36px;
     }
@@ -90,4 +89,4 @@ h1 {
         gap: 35px;
         margin-bottom: 45px;
     }
-  }*/
+  }

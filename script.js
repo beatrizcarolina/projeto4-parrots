@@ -1,5 +1,6 @@
 let numberOfCards = 0;
 let listOfCards = [];
+let firstCardSelected, secondCardSelected;
 
 StartGame();
 
@@ -41,15 +42,69 @@ function createCards() {
     const main = document.querySelector(".container");
 
     let content;
+    
     content = `<div class="cards-container">`;
+    
     for (let i=0; i < numberOfCards; i++) {
-        content += `<div class = "card" onclick = "selectedCard(this)" data-test = "card">`;
+        content += `<div class = "card" onclick = "selectCard(this)" data-test = "card">`;
         content += `<div class = "face">`;
         content += `<img src="./imagens/back.png" alt = "frontparrot" title="frontparrot" data-test = "face-down-image"></div>`;
         content += `<div class = "back-face face">`;
         content += `<img class = "${cards[i]}" src = "./imagens/${cards[i]}.gif" data-test = "face-up-image"`;
         content += `alt="${cards[i]}" title = "${cards[i]}"></div></div>`
     }
+    
     content += `</div>`;
     main.innerHTML += content;
+}
+
+function selectCard(selected) {
+    
+    if (secondCardSelected !== null) {
+        resetSelectedCards();
+    }
+
+    if (firstCardSelected === selected || selected.classList.contains("check")) {
+        return;
+    }
+
+    if (firstCardSelected == null) {
+        firstCardSelected = selected;
+        flipCard(firstCardSelected);
+        return;
+    }
+
+    secondCardSelected = selected;
+    flipCard(secondCardSelected);
+
+    const firstCard = firstCardSelected.querySelector(".back-face").querySelector("img").classList[0];
+    const secondCard = secondCardSelected.querySelector(".back-face").querySelector("img").classList[0];
+
+    if(firstCard == secondCard) {
+        console.log("Cartas Iguais");
+        firstCardSelected.classList.add("check");
+        secondCardSelected.classList.add("check");
+    }
+    else {
+        console.log("Cartas Diferentes")
+        setTimeout(flipCards, 1000);
+    }
+}
+
+function flipCard(card) {
+    frontCard = card.querySelector(".face");
+    backCard = card.querySelector(".back-face");
+
+    frontCard.classList.toggle("front");
+    backCard.classList.toggle("back");
+}
+
+function flipCards(){
+    flipCard(firstCardSelected);
+    flipCard(secondCardSelected);
+}
+
+function resetSelectedCards() {
+    firstCardSelected = null;
+    secondCardSelected = null;
 }
