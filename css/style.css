@@ -78,7 +78,7 @@ h1 {
 
   /* ----- RESPONSIVIDADE ----- */
 
-  @media(max-width: 335px) {
+ /* @media(max-width: 335px) {
     h1 {
         font-size: 36px;
     }
@@ -90,4 +90,4 @@ h1 {
         gap: 35px;
         margin-bottom: 45px;
     }
-  }
+  }*/

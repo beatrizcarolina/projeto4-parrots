@@ -43,7 +43,12 @@ function createCards() {
     let content;
     content = `<div class="cards-container">`;
     for (let i=0; i < numberOfCards; i++) {
-        content += i;
+        content += `<div class = "card" onclick = "selectedCard(this)" data-test = "card">`;
+        content += `<div class = "face">`;
+        content += `<img src="./imagens/back.png" alt = "frontparrot" title="frontparrot" data-test = "face-down-image"></div>`;
+        content += `<div class = "back-face face">`;
+        content += `<img class = "${cards[i]}" src = "./imagens/${cards[i]}.gif" data-test = "face-up-image"`;
+        content += `alt="${cards[i]}" title = "${cards[i]}"></div></div>`
     }
     content += `</div>`;
     main.innerHTML += content;
