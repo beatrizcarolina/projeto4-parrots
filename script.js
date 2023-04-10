@@ -1,6 +1,7 @@
 let numberOfCards = 0;
 let listOfCards = [];
 let firstCardSelected, secondCardSelected;
+let tries = 0;
 
 StartGame();
 
@@ -68,6 +69,8 @@ function selectCard(selected) {
         return;
     }
 
+    tries++;
+
     if (firstCardSelected == null) {
         firstCardSelected = selected;
         flipCard(firstCardSelected);
@@ -84,6 +87,9 @@ function selectCard(selected) {
         console.log("Cartas Iguais");
         firstCardSelected.classList.add("check");
         secondCardSelected.classList.add("check");
+        listOfCards.push(firstCardSelected);
+        listOfCards.push(secondCardSelected);
+        setTimeout(endGame, 200);
     }
     else {
         console.log("Cartas Diferentes")
@@ -107,4 +113,11 @@ function flipCards(){
 function resetSelectedCards() {
     firstCardSelected = null;
     secondCardSelected = null;
+}
+
+function endGame() {
+    if (listOfCards.length < numberOfCards) {
+        return;
+    }
+    alert(`Você ganhou em ${tries} jogadas!`);
 }
